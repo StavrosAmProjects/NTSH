@@ -6,6 +6,8 @@ Standalone civic reporting and digital evidence project. It is not an official a
 
 Open `index.html` in a browser. The landing page is a visual prototype; its report button leads to an explanatory section and does not submit information.
 
+See [HANDOFF.md](HANDOFF.md) for Mac installation, Work Mode setup, and GitHub repository commands. `AGENTS.md` defines this repository's standalone boundary.
+
 ## Verify prototype bundle
 
 Requires Python 3.12+, no third-party packages.
