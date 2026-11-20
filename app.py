@@ -17,33 +17,23 @@ ALLOWED_HOSTS = {f"127.0.0.1:{PORT}", f"localhost:{PORT}"}
 ALLOWED_ORIGINS = {f"http://{host}" for host in ALLOWED_HOSTS}
 
 CATEGORIES = {
-    "access": {"el": "Προσβασιμότητα", "en": "Accessibility"},
-    "waste": {"el": "Καθαριότητα δημόσιου χώρου", "en": "Public-space cleanliness"},
-    "property": {"el": "Δημόσιος εξοπλισμός", "en": "Public equipment"},
+    "traffic": {"el": "Κυκλοφορία και στάθμευση", "en": "Traffic and parking"},
 }
 SCENARIOS = {
-    "ramp-boxes": {
-        "category": "access",
-        "title": {"el": "Κούτες μπροστά σε ράμπα", "en": "Boxes beside a ramp"},
+    "sidewalk-parking": {
+        "category": "traffic",
+        "title": {"el": "Στάθμευση πάνω σε πεζοδρόμιο", "en": "Parking on a sidewalk"},
         "summary": {
-            "el": "Φανταστικό παράδειγμα: κούτες έχουν τοποθετηθεί μπροστά σε ράμπα πεζοδρομίου.",
-            "en": "Fictional example: boxes have been placed in front of a sidewalk ramp.",
+            "el": "Φανταστικό παράδειγμα: ένα όχημα είναι σταθμευμένο πάνω σε πεζοδρόμιο.",
+            "en": "Fictional example: a vehicle is parked on a sidewalk.",
         },
     },
-    "park-litter": {
-        "category": "waste",
-        "title": {"el": "Σακούλα σε πάρκο", "en": "Bag left in a park"},
+    "disabled-bay-parking": {
+        "category": "traffic",
+        "title": {"el": "Στάθμευση σε θέση ΑμεΑ", "en": "Parking in a disabled parking space"},
         "summary": {
-            "el": "Φανταστικό παράδειγμα: μια σακούλα απορριμμάτων βρίσκεται δίπλα σε κάδο.",
-            "en": "Fictional example: a bag of rubbish is beside a public bin.",
-        },
-    },
-    "bench-panel": {
-        "category": "property",
-        "title": {"el": "Φθαρμένο παγκάκι", "en": "Damaged public bench"},
-        "summary": {
-            "el": "Φανταστικό παράδειγμα: ένα παγκάκι σε δημόσιο χώρο χρειάζεται συντήρηση.",
-            "en": "Fictional example: a public bench appears to need maintenance.",
+            "el": "Φανταστικό παράδειγμα: ένα όχημα χωρίς σχετική άδεια καταλαμβάνει θέση στάθμευσης ΑμεΑ.",
+            "en": "Fictional example: a vehicle without the relevant permit occupies a disabled parking space.",
         },
     },
 }

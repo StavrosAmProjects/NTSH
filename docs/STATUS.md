@@ -6,7 +6,7 @@ Updated: 2026-11-20
 
 - Standalone Git repository with the project brief and preserved initial history.
 - Static bilingual prototype with an interactive local demo flow.
-- Python standard-library backend bound to loopback; fixed synthetic scenarios only.
+- Python standard-library backend bound to loopback; two fixed synthetic traffic scenarios: sidewalk parking and disabled-space parking.
 - In-memory demo receipts with no free text, uploads, identity fields, or external transmission.
 - Python standard-library CLI that checks media SHA-256, manifest binding, and a hash-linked event log.
 - Synthetic verifier bundle explicitly marked as non-evidence.
