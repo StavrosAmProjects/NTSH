@@ -27,16 +27,16 @@ SCENARIOS = {
         "category": "traffic",
         "title": {"el": "Στάθμευση πάνω σε πεζοδρόμιο", "en": "Parking on a sidewalk"},
         "summary": {
-            "el": "Φανταστικό παράδειγμα: ένα όχημα είναι σταθμευμένο πάνω σε πεζοδρόμιο.",
-            "en": "Fictional example: a vehicle is parked on a sidewalk.",
+            "el": "Φανταστικό παράδειγμα: ένα αυτοκίνητο έχει παρκάρει πάνω στο πεζοδρόμιο.",
+            "en": "Made-up example: a car is parked on the sidewalk.",
         },
     },
     "disabled-bay-parking": {
         "category": "traffic",
         "title": {"el": "Στάθμευση σε θέση ΑμεΑ", "en": "Parking in a disabled parking space"},
         "summary": {
-            "el": "Φανταστικό παράδειγμα: ένα όχημα χωρίς σχετική άδεια καταλαμβάνει θέση στάθμευσης ΑμεΑ.",
-            "en": "Fictional example: a vehicle without the relevant permit occupies a disabled parking space.",
+            "el": "Φανταστικό παράδειγμα: αυτοκίνητο χωρίς την απαιτούμενη άδεια έχει παρκάρει σε θέση ΑμεΑ.",
+            "en": "Made-up example: a car without the required permit is parked in an accessible parking space.",
         },
     },
 }

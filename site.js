@@ -87,7 +87,7 @@ function renderPreview() {
   const paragraph = preview.querySelector('p');
   paragraph.textContent = scenario
     ? scenario.summary[language]
-    : (language === 'el' ? 'Η περιγραφή του επιλεγμένου παραδείγματος θα εμφανιστεί εδώ.' : 'The selected example will appear here.');
+    : (language === 'el' ? 'Επίλεξε μια περίπτωση για να δεις το παράδειγμα.' : 'Choose a scenario to see the example.');
   preview.classList.toggle('has-scenario', Boolean(scenario));
 }
 
@@ -101,18 +101,18 @@ function renderReceipts() {
     title.textContent = report.scenario_title[language];
     const status = document.createElement('span');
     status.className = 'receipt-status';
-    status.textContent = 'DEMO';
+    status.textContent = language === 'el' ? 'ΔΟΚΙΜΗ' : 'DEMO';
     top.append(title, status);
     const id = document.createElement('code');
     id.textContent = report.id;
     const hash = document.createElement('small');
     hash.textContent = report.evidence
       ? `SHA-256 · ${report.evidence.sha256}`
-      : (language === 'el' ? 'Χωρίς εικόνα' : 'No image');
+      : (language === 'el' ? 'Χωρίς φωτογραφία' : 'No photo');
     const note = document.createElement('small');
     note.textContent = language === 'el'
-      ? 'Τοπικό · δεν διαβιβάστηκε · προέλευση εικόνας μη επαληθευμένη'
-      : 'Local · not transmitted · image source unverified';
+      ? 'Τοπική δοκιμή. Δεν στάλθηκε σε αρχή. Η φωτογραφία δεν επαληθεύτηκε.'
+      : 'Local demo. Not sent to an authority. Photo not verified.';
     item.append(top, id, hash, note);
     receiptList.append(item);
   });
@@ -120,8 +120,10 @@ function renderReceipts() {
   emptyReceipts.hidden = reports.length > 0;
 }
 
-function setCameraStatus(messageText, isError = false) {
-  cameraStatus.textContent = messageText;
+function setCameraStatus(elMessage, enMessage, isError = false) {
+  cameraStatus.dataset.el = elMessage;
+  cameraStatus.dataset.en = enMessage;
+  cameraStatus.textContent = cameraStatus.dataset[language];
   cameraStatus.classList.toggle('is-error', isError);
 }
 
@@ -152,16 +154,19 @@ function clearCapture() {
   if (previewUrl) URL.revokeObjectURL(previewUrl);
   previewUrl = null;
   stopCamera();
-  setCameraStatus(language === 'el'
-    ? 'Χρειάζεται άδεια κάμερας. Η λήψη θα είναι μη επαληθευμένο δείγμα browser.'
-    : 'Camera permission is needed. This will be an unverified browser sample.');
+  setCameraStatus(
+    'Για να δοκιμάσεις τη λήψη, επίτρεψε την πρόσβαση στην κάμερα. Η φωτογραφία δεν θα επαληθευτεί.',
+    'Allow camera access to try the capture. The photo will not be verified.'
+  );
 }
 
 async function openCamera() {
   if (!navigator.mediaDevices?.getUserMedia) {
-    setCameraStatus(language === 'el'
-      ? 'Η κάμερα δεν υποστηρίζεται σε αυτό το browser ή origin. Χρησιμοποίησε localhost και σύγχρονο browser.'
-      : 'Camera is unavailable in this browser or origin. Use localhost and a current browser.', true);
+    setCameraStatus(
+      'Η κάμερα δεν είναι διαθέσιμη σε αυτή τη σελίδα. Άνοιξε τη δοκιμή από το localhost με ενημερωμένο browser.',
+      'Camera access is unavailable on this page. Open the demo through localhost in an up-to-date browser.',
+      true
+    );
     return;
   }
   try {
@@ -169,14 +174,17 @@ async function openCamera() {
     cameraVideo.srcObject = cameraStream;
     cameraVideo.hidden = false;
     await cameraVideo.play();
-    setCameraStatus(language === 'el'
-      ? 'Η κάμερα είναι ενεργή. Η λήψη browser δεν είναι C2PA ή native αποδεικτικό.'
-      : 'Camera is active. Browser capture is not C2PA or native evidence.');
+    setCameraStatus(
+      'Η κάμερα λειτουργεί. Η φωτογραφία θα είναι συμπιεσμένο δείγμα, όχι το πρωτότυπο.',
+      'The camera is on. The photo will be a compressed sample, not the original.'
+    );
   } catch {
     cameraStream = null;
-    setCameraStatus(language === 'el'
-      ? 'Δεν δόθηκε πρόσβαση στην κάμερα. Έλεγξε τις άδειες browser και ξαναδοκίμασε.'
-      : 'Camera access was not granted. Check browser permissions and try again.', true);
+    setCameraStatus(
+      'Δεν επιτράπηκε η πρόσβαση στην κάμερα. Έλεγξε τις ρυθμίσεις του browser και δοκίμασε ξανά.',
+      'Camera access was denied. Check your browser settings and try again.',
+      true
+    );
   }
   updateControls();
 }
@@ -186,9 +194,10 @@ async function sendCapturedImage() {
   submitting = true;
   submissionFailed = false;
   updateControls();
-  setCameraStatus(language === 'el'
-    ? 'Υπολογίζεται hash στον τοπικό server. Δεν γίνεται διαβίβαση σε Αρχή.'
-    : 'Hashing on the local server. No authority delivery is occurring.');
+  setCameraStatus(
+    'Η φωτογραφία στέλνεται στην εφαρμογή που τρέχει σε αυτόν τον υπολογιστή, για να υπολογιστεί το ψηφιακό της αποτύπωμα. Δεν πάει σε αρμόδια αρχή.',
+    'Sending the photo to the demo running on this computer to calculate its file hash. It is not sent to an authority.'
+  );
   try {
     const result = await api('/api/v1/reports', {
       method: 'POST',
@@ -208,9 +217,11 @@ async function sendCapturedImage() {
   } catch {
     submissionFailed = true;
     showMessage('failed', true);
-    setCameraStatus(language === 'el'
-      ? 'Δεν έγινε τοπικός υπολογισμός. Η εικόνα παραμένει μόνο σε αυτή τη σελίδα· μπορείς να επαναλάβεις.'
-      : 'Local hashing failed. The image remains only in this page; you can retry.', true);
+    setCameraStatus(
+      'Η εφαρμογή δεν ολοκλήρωσε τη διαδικασία. Η φωτογραφία παραμένει σε αυτή τη σελίδα. Δοκίμασε ξανά.',
+      'The demo did not finish processing the photo. It is still on this page. Try again.',
+      true
+    );
   } finally {
     submitting = false;
     updateControls();
@@ -225,12 +236,12 @@ async function capturePhoto() {
   captureCanvas.getContext('2d', { alpha: false }).drawImage(cameraVideo, 0, 0, captureCanvas.width, captureCanvas.height);
   capturedImage = await new Promise((resolve) => captureCanvas.toBlob(resolve, 'image/jpeg', 0.88));
   if (!capturedImage) {
-    setCameraStatus(language === 'el' ? 'Δεν δημιουργήθηκε εικόνα. Δοκίμασε ξανά.' : 'Could not create image. Try again.', true);
+    setCameraStatus('Δεν δημιουργήθηκε η φωτογραφία. Δοκίμασε ξανά.', 'The photo could not be created. Try again.', true);
     return;
   }
   if (capturedImage.size > 4 * 1024 * 1024) {
     capturedImage = null;
-    setCameraStatus(language === 'el' ? 'Το δείγμα είναι μεγαλύτερο από 4 MiB. Δοκίμασε ξανά.' : 'The image sample exceeds 4 MiB. Try again.', true);
+    setCameraStatus('Η φωτογραφία είναι μεγαλύτερη από 4 MiB. Δοκίμασε ξανά.', 'The photo is larger than 4 MiB. Try again.', true);
     updateControls();
     return;
   }
@@ -239,19 +250,21 @@ async function capturePhoto() {
   cameraPreview.src = previewUrl;
   cameraPreview.hidden = false;
   stopCamera();
-  setCameraStatus(language === 'el'
-    ? 'Δείγμα browser έτοιμο. Δεν είναι πρωτότυπο ούτε επαληθευμένο. Δημιουργείται τοπικό demo.'
-    : 'Browser sample ready. It is not original or verified. Creating a local demo.');
+  setCameraStatus(
+    'Έτοιμη η δοκιμαστική φωτογραφία. Δεν είναι το πρωτότυπο και δεν έχει επαληθευτεί. Δημιουργείται η τοπική απόδειξη.',
+    'Demo photo ready. It is not the original and has not been verified. Creating the local receipt.'
+  );
   await sendCapturedImage();
 }
 
 function showMessage(key, isError = false) {
   const messages = {
-    ready: { el: 'Τοπικός server έτοιμος. Χρησιμοποίησε μόνο τα φανταστικά παραδείγματα.', en: 'Local server ready. Use fictional examples only.' },
-    unavailable: { el: 'Ο τοπικός server δεν είναι διαθέσιμος. Εκκίνησέ τον με python3 app.py.', en: 'Local server unavailable. Start it with python3 app.py.' },
-    submitted: { el: 'Δημιουργήθηκε τοπικός demo αριθμός. Υπολογίστηκε hash· η εικόνα απορρίφθηκε. Δεν στάλθηκε σε Αρχή.', en: 'Local demo ID created. Hash calculated; image bytes discarded. Nothing was sent to an authority.' },
-    failed: { el: 'Δεν δημιουργήθηκε demo αριθμός. Μπορείς να επαναλάβεις τον τοπικό υπολογισμό.', en: 'No demo ID was created. You can retry the local hash operation.' },
+    ready: { el: 'Έτοιμη η δοκιμή. Χρησιμοποίησε μόνο τα φανταστικά παραδείγματα.', en: 'The demo is ready. Please use the fictional examples only.' },
+    unavailable: { el: 'Δεν μπορώ να συνδεθώ με την τοπική εφαρμογή. Άνοιξέ την με python3 app.py και δοκίμασε ξανά.', en: 'Could not connect to the local app. Start it with python3 app.py and try again.' },
+    submitted: { el: 'Δημιουργήθηκε δοκιμαστική απόδειξη. Υπολογίστηκε το ψηφιακό αποτύπωμα και η φωτογραφία διαγράφηκε από την εφαρμογή. Δεν στάλθηκε σε αρχή.', en: 'Demo receipt created. The file hash was calculated and the photo was discarded. Nothing was sent to an authority.' },
+    failed: { el: 'Δεν δημιουργήθηκε η απόδειξη. Μπορείς να δοκιμάσεις ξανά.', en: 'No receipt was created. You can try again.' },
   };
+  message.dataset.key = key;
   message.textContent = messages[key][language];
   message.classList.toggle('is-error', isError);
 }
@@ -260,6 +273,7 @@ categorySelect.addEventListener('change', () => {
   renderScenarios();
   renderPreview();
   message.textContent = '';
+  delete message.dataset.key;
 });
 scenarioSelect.addEventListener('change', () => {
   renderPreview();
@@ -267,8 +281,11 @@ scenarioSelect.addEventListener('change', () => {
 });
 syntheticConfirm.addEventListener('change', updateControls);
 languageButton.addEventListener('click', () => {
+  const currentMessage = message.dataset.key;
+  const isError = message.classList.contains('is-error');
   language = language === 'el' ? 'en' : 'el';
   localizeStaticContent();
+  if (currentMessage) showMessage(currentMessage, isError);
 });
 startCameraButton.addEventListener('click', openCamera);
 captureButton.addEventListener('click', capturePhoto);
