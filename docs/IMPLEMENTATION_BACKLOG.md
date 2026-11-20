@@ -5,7 +5,8 @@
 - [x] Create isolated repository and preserve brief.
 - [x] Record project limits and initial evidence model.
 - [x] Implement standard-library hash/event-chain verifier POC.
-- [ ] Run verifier positive/tamper tests and record outputs.
+- [x] Run verifier positive/tamper tests and record outputs.
+- [x] Add a loopback-only, synthetic-only reporting demo with an in-memory receipt API.
 - [ ] Verify current official online reporting routes by incident type; targeted only.
 - [ ] Complete repo/license/security audit for candidates chosen for POC.
 

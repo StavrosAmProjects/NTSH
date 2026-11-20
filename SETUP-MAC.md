@@ -6,7 +6,7 @@
 
 ```sh
 cd "/Users/Ambizas/Downloads/00 Projects/Random Projects/Ensinesthisi.cy"
-python3 -m http.server 8765
+python3 app.py
 ```
 
 4. Open `http://127.0.0.1:8765` in your Mac browser. Keep Terminal open while viewing.
@@ -19,4 +19,4 @@ git status
 git log -1 --oneline
 ```
 
-The web page is a visual prototype. It does not submit reports or transmit data.
+The local demo accepts fixed fictional scenarios and creates in-memory demo IDs only. It does not accept real reports or transmit data.

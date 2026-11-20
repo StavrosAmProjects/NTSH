@@ -16,7 +16,7 @@ In Terminal:
 
 ```sh
 cd "/Users/Ambizas/Downloads/00 Projects/Random Projects/Ensinesthisi.cy"
-python3 -m http.server 8765
+python3 app.py
 ```
 
 Open `http://127.0.0.1:8765`. Keep Terminal open. Stop with `Control+C`.
@@ -56,4 +56,4 @@ git log -2 --oneline
 git remote -v
 ```
 
-The preview is only a visual prototype. It does not accept or transmit real reports.
+The preview is a local synthetic demo. It accepts fixed fictional scenarios and creates in-memory demo IDs only; it does not accept or transmit real reports.

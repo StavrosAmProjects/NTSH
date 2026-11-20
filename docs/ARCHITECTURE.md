@@ -36,3 +36,10 @@ Challenge proves only that the app had a fresh challenge when it formed the pack
 - Avoid third-party analytics and advertising SDKs.
 - Keep anti-abuse/network logs minimal, access-controlled, and retention-limited.
 - Separate reporter identity from report/evidence records. Do not claim technical anonymity until network, storage, support, notification and authority flows are reviewed end to end.
+
+
+## Local prototype service boundary
+
+`app.py` uses only Python's standard library and serves both the site and `/api` from `127.0.0.1:8765`. `GET /api/scenarios` returns a fixed bilingual synthetic catalog; `POST /api/reports` accepts only a catalog scenario ID and an explicit synthetic-demo confirmation; `GET /api/reports` returns receipts held in process memory. Unknown fields, arbitrary report text, wrong content types, oversized payloads, and non-local Host/Origin values are rejected. The API stores no files and sends no data to another service.
+
+Demo receipts carry a local process time labeled untrusted, a demo-only receipt type, and `not-transmitted` status. Restarting the process clears all entries. This design demonstrates the browser/API flow only; it provides no authentication, durable storage, real report intake, authority workflow, trusted timestamp, or production security boundary.

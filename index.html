@@ -4,77 +4,102 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f4ef">
-  <title>Ensinesthisi.cy — Μια αναφορά, με τεκμήρια</title>
-  <link rel="stylesheet" href="site.css">
+  <meta name="description" content="Τοπικό, συνθετικό πρωτότυπο για υπεύθυνη αναφορά περιστατικών. Δεν είναι επίσημη υπηρεσία.">
+  <title>Ensinesthisi.cy — Αναφορά με διαφάνεια</title>
+  <link rel="stylesheet" href="site.css?v=1">
+  <script src="site.js?v=1" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main" data-el="Μετάβαση στο περιεχόμενο" data-en="Skip to content">Μετάβαση στο περιεχόμενο</a>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="Ensinesthisi.cy αρχική">
       <span class="brand-mark">ε</span><span>ens<span class="brand-accent">.</span>cy</span>
     </a>
     <nav aria-label="Κύρια πλοήγηση">
-      <a href="#how">Πώς λειτουργεί</a>
-      <a href="#trust">Αξιοπιστία</a>
+      <a href="#how" data-el="Πώς λειτουργεί" data-en="How it works">Πώς λειτουργεί</a>
+      <a href="#trust" data-el="Αρχές" data-en="Principles">Αρχές</a>
+      <a class="nav-demo" href="#demo" data-el="Δοκίμασε το demo" data-en="Try the demo">Δοκίμασε το demo</a>
       <button class="language" id="language" type="button" aria-label="Switch language">EN</button>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <div class="demo-banner" role="status">
+    <span class="demo-mark">●</span>
+    <span data-el="ΔΙΑΔΡΑΣΤΙΚΟ ΠΡΩΤΟΤΥΠΟ · ΜΟΝΟ ΦΑΝΤΑΣΤΙΚΑ ΣΕΝΑΡΙΑ · ΔΕΝ ΕΙΝΑΙ ΕΠΙΣΗΜΗ ΥΠΗΡΕΣΙΑ" data-en="INTERACTIVE PROTOTYPE · FICTIONAL SCENARIOS ONLY · NOT AN OFFICIAL SERVICE">ΔΙΑΔΡΑΣΤΙΚΟ ΠΡΩΤΟΤΥΠΟ · ΜΟΝΟ ΦΑΝΤΑΣΤΙΚΑ ΣΕΝΑΡΙΑ · ΔΕΝ ΕΙΝΑΙ ΕΠΙΣΗΜΗ ΥΠΗΡΕΣΙΑ</span>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="top">
       <div class="hero-copy">
-        <div class="eyebrow"><span class="live-dot"></span><span data-el="Μια πιο καθαρή διαδρομή για να ακουστεί κάτι" data-en="A clearer way to report what you see">Μια πιο καθαρή διαδρομή για να ακουστεί κάτι</span></div>
-        <h1 data-el="Είδες κάτι;<br>Κάνε το <em>να μετρήσει.</em>" data-en="See something?<br>Make it <em>count.</em>">Είδες κάτι;<br>Κάνε το <em>να μετρήσει.</em></h1>
-        <p class="lede" data-el="Μια απλή, ιδιωτική εφαρμογή για αναφορές περιστατικών με φωτογραφικά τεκμήρια που μπορούν να ελεγχθούν." data-en="A simple, private app for reporting incidents with photographic evidence that can be checked.">Μια απλή, ιδιωτική εφαρμογή για αναφορές περιστατικών με φωτογραφικά τεκμήρια που μπορούν να ελεγχθούν.</p>
+        <div class="eyebrow"><span class="live-dot"></span><span data-el="Μια αναφορά αρχίζει με σαφήνεια" data-en="A report begins with clarity">Μια αναφορά αρχίζει με σαφήνεια</span></div>
+        <h1 data-el="Είδες κάτι;<br>Δες πώς <em>ελέγχεται.</em>" data-en="See something?<br>See how it <em>can be checked.</em>">Είδες κάτι;<br>Δες πώς <em>ελέγχεται.</em></h1>
+        <p class="lede" data-el="Μια προσεκτική επίδειξη της ροής αναφοράς, με προκαθορισμένα φανταστικά περιστατικά και χωρίς πραγματικά δεδομένα." data-en="A careful preview of the reporting flow, using fixed fictional scenarios and no real-world data.">Μια προσεκτική επίδειξη της ροής αναφοράς, με προκαθορισμένα φανταστικά περιστατικά και χωρίς πραγματικά δεδομένα.</p>
         <div class="hero-actions">
-          <a class="button button-dark" href="#report"><span data-el="Ξεκίνα αναφορά" data-en="Start a report">Ξεκίνα αναφορά</span><span aria-hidden="true">↗</span></a>
+          <a class="button button-dark" href="#demo"><span data-el="Δοκίμασε την αναφορά demo" data-en="Try a demo report">Δοκίμασε την αναφορά demo</span><span aria-hidden="true">↘</span></a>
           <a class="text-link" href="#how"><span data-el="Δες πώς δουλεύει" data-en="See how it works">Δες πώς δουλεύει</span><span aria-hidden="true">↓</span></a>
         </div>
-        <div class="trust-note"><span class="shield">✓</span><span data-el="Χωρίς δημόσιες κατηγορίες. Χωρίς αυτόματα πρόστιμα." data-en="No public accusations. No automatic fines.">Χωρίς δημόσιες κατηγορίες. Χωρίς αυτόματα πρόστιμα.</span></div>
+        <div class="trust-note"><span class="shield">✓</span><span data-el="Καμία πραγματική υποβολή. Καμία διαβίβαση σε Αρχή." data-en="No real submissions. Nothing is sent to an authority.">Καμία πραγματική υποβολή. Καμία διαβίβαση σε Αρχή.</span></div>
       </div>
-      <div class="hero-art" aria-label="Ενδεικτική προεπισκόπηση της εφαρμογής">
+      <div class="hero-art" aria-label="Ενδεικτική μακέτα εφαρμογής, όχι πραγματικός χάρτης" data-el-aria="Ενδεικτική μακέτα εφαρμογής, όχι πραγματικός χάρτης" data-en-aria="Illustrative app mockup, not a real map">
         <div class="sun-disc"></div>
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="phone">
+        <div class="phone" aria-hidden="true">
           <div class="phone-top"><span>9:41</span><span class="phone-sensors">● &nbsp; ▰</span></div>
           <div class="app-head"><span class="mini-brand"><b>ε</b> ens.cy</span><span class="menu-dots">•••</span></div>
-          <div class="greeting">Καλημέρα,<br><strong>γειτονιά.</strong></div>
-          <div class="map-card"><div class="map-grid"></div><div class="road road-a"></div><div class="road road-b"></div><div class="map-pin"><span></span></div><div class="map-label">Λευκωσία</div><div class="map-tag">ΚΟΝΤΑ ΣΟΥ</div></div>
-          <div class="phone-caption">Κάτι χρειάζεται την προσοχή μας;</div>
-          <div class="phone-cta"><span class="camera-icon">＋</span><span>Νέα αναφορά</span><span class="cta-arrow">→</span></div>
-          <div class="phone-foot"><span>⌂<small>Αρχική</small></span><span>◷<small>Οι αναφορές μου</small></span><span>☰<small>Πληροφορίες</small></span></div>
+          <div class="greeting"><span data-el="Καλημέρα," data-en="Good morning,">Καλημέρα,</span><br><strong data-el="γειτονιά." data-en="neighbourhood.">γειτονιά.</strong></div>
+          <div class="map-card"><div class="map-grid"></div><div class="road road-a"></div><div class="road road-b"></div><div class="map-pin"><span></span></div><div class="map-label" data-el="Ενδεικτικός χάρτης" data-en="Illustrative map">Ενδεικτικός χάρτης</div><div class="map-tag" data-el="ΧΩΡΙΣ GPS" data-en="NO GPS">ΧΩΡΙΣ GPS</div></div>
+          <div class="phone-caption" data-el="Δες πώς ξεκινά μια αναφορά" data-en="A look at a report">Δες πώς ξεκινά μια αναφορά</div>
+          <div class="phone-cta"><span class="camera-icon">＋</span><span data-el="Νέα αναφορά" data-en="New report">Νέα αναφορά</span><span class="cta-arrow">→</span></div>
+          <div class="phone-foot"><span>⌂<small data-el="Αρχική" data-en="Home">Αρχική</small></span><span>◷<small data-el="Demo" data-en="Demo">Demo</small></span><span>☰<small data-el="Πληροφορίες" data-en="Info">Πληροφορίες</small></span></div>
         </div>
-        <div class="floating-card card-time"><span class="card-icon">◷</span><span><small>ΧΡΟΝΟΣ ΠΑΡΑΛΑΒΗΣ</small><b>Καταγράφεται</b></span></div>
-        <div class="floating-card card-proof"><span class="proof-check">✓</span><span><small>ΤΕΚΜΗΡΙΟ</small><b>Ελέγξιμο αρχείο</b></span></div>
-        <span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✳</span>
+        <div class="floating-card card-time"><span class="card-icon">◷</span><span><small data-el="ΧΡΟΝΟΣ DEMO" data-en="DEMO TIME">ΧΡΟΝΟΣ DEMO</small><b data-el="Μη πιστοποιημένος" data-en="Not trusted">Μη πιστοποιημένος</b></span></div>
+        <div class="floating-card card-proof"><span class="proof-check">✓</span><span><small data-el="ΠΕΡΙΕΧΟΜΕΝΟ" data-en="CONTENT">ΠΕΡΙΕΧΟΜΕΝΟ</small><b data-el="Φανταστικό δείγμα" data-en="Fictional sample">Φανταστικό δείγμα</b></span></div>
+        <span class="art-spark spark-one" aria-hidden="true">✳</span><span class="art-spark spark-two" aria-hidden="true">✳</span>
       </div>
-      <div class="hero-bottom"><span>01 / 03</span><span class="bottom-line"></span><span data-el="Σχεδιασμένο για ανθρώπους, όχι για γραφειοκρατία" data-en="Designed for people, not paperwork">Σχεδιασμένο για ανθρώπους, όχι για γραφειοκρατία</span></div>
+      <div class="hero-bottom"><span>01 / 03</span><span class="bottom-line"></span><span data-el="Σχεδιασμένο για ανθρώπους, με ειλικρίνεια για τα όρια" data-en="Designed for people, honest about its limits">Σχεδιασμένο για ανθρώπους, με ειλικρίνεια για τα όρια</span></div>
     </section>
 
     <section class="principles" id="trust">
-      <div class="section-intro"><span class="section-kicker">Η ΙΔΕΑ</span><h2 data-el="Αναφορά με φροντίδα.<br><em>Τεκμήρια με διαφάνεια.</em>" data-en="Report with care.<br><em>Evidence with transparency.</em>">Αναφορά με φροντίδα.<br><em>Τεκμήρια με διαφάνεια.</em></h2></div>
+      <div class="section-intro"><span class="section-kicker" data-el="ΤΙ ΔΟΚΙΜΑΖΟΥΜΕ" data-en="WHAT WE ARE TESTING">ΤΙ ΔΟΚΙΜΑΖΟΥΜΕ</span><h2 data-el="Αναφορά με φροντίδα.<br><em>Τεκμήρια με διαφάνεια.</em>" data-en="Report with care.<br><em>Evidence with transparency.</em>">Αναφορά με φροντίδα.<br><em>Τεκμήρια με διαφάνεια.</em></h2></div>
       <div class="principle-grid">
-        <article><span class="principle-no">01</span><h3 data-el="Εύκολο να ξεκινήσεις" data-en="Easy to start">Εύκολο να ξεκινήσεις</h3><p data-el="Καθαρά βήματα, σαφής καθοδήγηση και επιλογή ανώνυμης πληροφορίας όπου υποστηρίζεται." data-en="Clear steps, useful guidance, and anonymous information where supported.">Καθαρά βήματα, σαφής καθοδήγηση και επιλογή ανώνυμης πληροφορίας όπου υποστηρίζεται.</p></article>
-        <article><span class="principle-no">02</span><h3 data-el="Έλεγχος, όχι υποσχέσεις" data-en="Checks, not promises">Έλεγχος, όχι υποσχέσεις</h3><p data-el="Η εφαρμογή καταγράφει τι επαληθεύτηκε και τι παραμένει αβέβαιο. Δεν βαφτίζει ένα hash απόδειξη της σκηνής." data-en="The app shows what was checked and what remains uncertain. A hash is not proof of the scene.">Η εφαρμογή καταγράφει τι επαληθεύτηκε και τι παραμένει αβέβαιο. Δεν βαφτίζει ένα hash απόδειξη της σκηνής.</p></article>
-        <article><span class="principle-no">03</span><h3 data-el="Αρμόδιος άνθρωπος αποφασίζει" data-en="People make decisions">Αρμόδιος άνθρωπος αποφασίζει</h3><p data-el="Καμία δημόσια διαπόμπευση, αυτόματο πρόστιμο ή απόφαση ενοχής από αλγόριθμο." data-en="No public shaming, automatic fines, or algorithmic guilt decisions.">Καμία δημόσια διαπόμπευση, αυτόματο πρόστιμο ή απόφαση ενοχής από αλγόριθμο.</p></article>
+        <article><span class="principle-no">01</span><h3 data-el="Μόνο φανταστικά περιστατικά" data-en="Fictional cases only">Μόνο φανταστικά περιστατικά</h3><p data-el="Η επίδειξη χρησιμοποιεί σταθερά παραδείγματα. Δεν ζητά όνομα, κείμενο, φωτογραφία ή τοποθεσία." data-en="The demo uses fixed examples. It asks for no name, free text, photo, or location.">Η επίδειξη χρησιμοποιεί σταθερά παραδείγματα. Δεν ζητά όνομα, κείμενο, φωτογραφία ή τοποθεσία.</p></article>
+        <article><span class="principle-no">02</span><h3 data-el="Έλεγχος, όχι υποσχέσεις" data-en="Checks, not promises">Έλεγχος, όχι υποσχέσεις</h3><p data-el="Το αποδεικτικό αποτύπωμα δείχνει μόνο ακεραιότητα bytes από τη στιγμή του hash. Δεν αποδεικνύει πότε ή πού έγινε κάτι." data-en="A file hash only checks byte consistency from the moment it was created. It cannot prove when or where an event happened.">Το αποδεικτικό αποτύπωμα δείχνει μόνο ακεραιότητα bytes από τη στιγμή του hash. Δεν αποδεικνύει πότε ή πού έγινε κάτι.</p></article>
+        <article><span class="principle-no">03</span><h3 data-el="Αρμόδιος άνθρωπος αποφασίζει" data-en="People make decisions">Αρμόδιος άνθρωπος αποφασίζει</h3><p data-el="Καμία δημόσια κατηγορία, αυτόματο πρόστιμο ή απόφαση ενοχής από αλγόριθμο." data-en="No public accusations, automatic fines, or algorithmic guilt decisions.">Καμία δημόσια κατηγορία, αυτόματο πρόστιμο ή απόφαση ενοχής από αλγόριθμο.</p></article>
       </div>
     </section>
 
     <section class="how" id="how">
-      <div class="how-heading"><span class="section-kicker">ΤΡΙΑ ΑΠΛΑ ΒΗΜΑΤΑ</span><h2 data-el="Από αυτό που είδες,<br>σε αυτό που <em>μπορεί να ελεγχθεί.</em>" data-en="From what you saw,<br>to something <em>that can be checked.</em>">Από αυτό που είδες,<br>σε αυτό που <em>μπορεί να ελεγχθεί.</em></h2></div>
+      <div class="how-heading"><span class="section-kicker" data-el="Η ΡΟΗ DEMO" data-en="THE DEMO FLOW">Η ΡΟΗ DEMO</span><h2 data-el="Από μια επιλογή,<br>σε μια <em>τοπική απόδειξη.</em>" data-en="From a choice,<br>to a <em>local receipt.</em>">Από μια επιλογή,<br>σε μια <em>τοπική απόδειξη.</em></h2></div>
       <div class="steps">
-        <article class="step"><span class="step-number">1</span><div><h3 data-el="Πες μας τι συνέβη" data-en="Tell us what happened">Πες μας τι συνέβη</h3><p data-el="Διάλεξε κατηγορία και ακολούθησε οδηγίες για ασφαλή, υπεύθυνη καταγραφή." data-en="Choose a category and follow guidance for safe, responsible reporting.">Διάλεξε κατηγορία και ακολούθησε οδηγίες για ασφαλή, υπεύθυνη καταγραφή.</p></div><span class="step-glyph">⌁</span></article>
-        <article class="step"><span class="step-number">2</span><div><h3 data-el="Πρόσθεσε το τεκμήριο" data-en="Add your evidence">Πρόσθεσε το τεκμήριο</h3><p data-el="Η λήψη, η ώρα και η τοποθεσία καταγράφονται ξεχωριστά, με τις αβεβαιότητές τους." data-en="Capture, time, and location are recorded separately, with their uncertainties.">Η λήψη, η ώρα και η τοποθεσία καταγράφονται ξεχωριστά, με τις αβεβαιότητές τους.</p></div><span class="step-glyph">◎</span></article>
-        <article class="step"><span class="step-number">3</span><div><h3 data-el="Έλεγξε πριν στείλεις" data-en="Review before sending">Έλεγξε πριν στείλεις</h3><p data-el="Δες τι θα σταλεί, πού μπορεί να κατευθυνθεί και τι σημαίνει η επιλογή ανωνυμίας." data-en="See what will be sent, where it may go, and what anonymity means.">Δες τι θα σταλεί, πού μπορεί να κατευθυνθεί και τι σημαίνει η επιλογή ανωνυμίας.</p></div><span class="step-glyph">↗</span></article>
+        <article class="step"><span class="step-number">1</span><div><h3 data-el="Επίλεξε παράδειγμα" data-en="Choose an example">Επίλεξε παράδειγμα</h3><p data-el="Διάλεξε μία από τις προκαθορισμένες φανταστικές περιπτώσεις." data-en="Choose one of the fixed fictional scenarios.">Διάλεξε μία από τις προκαθορισμένες φανταστικές περιπτώσεις.</p></div><span class="step-glyph">⌁</span></article>
+        <article class="step"><span class="step-number">2</span><div><h3 data-el="Επιβεβαίωσε το demo" data-en="Confirm the demo">Επιβεβαίωσε το demo</h3><p data-el="Δεν προστίθενται φωτογραφίες, GPS, προσωπικά στοιχεία ή ελεύθερο κείμενο." data-en="No photos, GPS, personal details, or free text are collected.">Δεν προστίθενται φωτογραφίες, GPS, προσωπικά στοιχεία ή ελεύθερο κείμενο.</p></div><span class="step-glyph">◎</span></article>
+        <article class="step"><span class="step-number">3</span><div><h3 data-el="Πάρε τοπικό αριθμό demo" data-en="Get a local demo ID">Πάρε τοπικό αριθμό demo</h3><p data-el="Ο αριθμός μένει στη μνήμη του τοπικού server και διαγράφεται όταν αυτός σταματήσει." data-en="The ID stays in local server memory and disappears when the server stops.">Ο αριθμός μένει στη μνήμη του τοπικού server και διαγράφεται όταν αυτός σταματήσει.</p></div><span class="step-glyph">↗</span></article>
       </div>
     </section>
 
-    <section class="report" id="report">
-      <div class="report-copy"><span class="section-kicker">ΠΡΩΤΟ ΠΡΩΤΟΤΥΠΟ</span><h2 data-el="Μια πιο ανθρώπινη<br>διαδρομή για <em>αναφορά.</em>" data-en="A more human<br>way to <em>report.</em>">Μια πιο ανθρώπινη<br>διαδρομή για <em>αναφορά.</em></h2><p data-el="Αυτή είναι η πρώτη οπτική μακέτα του Ensinesthisi.cy. Οι πραγματικές υποβολές και η επίσημη διασύνδεση δεν είναι ακόμη ενεργές." data-en="This is the first visual prototype of Ensinesthisi.cy. Real submissions and official integrations are not active yet.">Αυτή είναι η πρώτη οπτική μακέτα του Ensinesthisi.cy. Οι πραγματικές υποβολές και η επίσημη διασύνδεση δεν είναι ακόμη ενεργές.</p><a class="button button-light" href="docs/STATUS.md"><span data-el="Δες την κατάσταση του έργου" data-en="View project status">Δες την κατάσταση του έργου</span><span aria-hidden="true">↗</span></a></div>
-      <div class="report-stamp"><span>ε</span><small>ΜΑΖΙ<br>ΓΙΑ ΤΗΝ<br>ΠΟΛΗ</small></div>
+    <section class="report" id="demo">
+      <div class="report-copy"><span class="section-kicker" data-el="ΤΟΠΙΚΟ DEMO" data-en="LOCAL DEMO">ΤΟΠΙΚΟ DEMO</span><h2 data-el="Δοκίμασε μια<br><em>φανταστική αναφορά.</em>" data-en="Try a<br><em>fictional report.</em>">Δοκίμασε μια<br><em>φανταστική αναφορά.</em></h2><p data-el="Η ροή δημιουργεί μόνο έναν δοκιμαστικό αριθμό στον τοπικό server. Δεν αποστέλλει τίποτα και δεν αποτελεί επίσημη καταγγελία ή απόδειξη παραλαβής." data-en="This flow creates only a demo ID on the local server. Nothing is transmitted; it is not an official complaint or proof of receipt.">Η ροή δημιουργεί μόνο έναν δοκιμαστικό αριθμό στον τοπικό server. Δεν αποστέλλει τίποτα και δεν αποτελεί επίσημη καταγγελία ή απόδειξη παραλαβής.</p><p class="storage-note"><span>●</span><span data-el="Μόνο στη μνήμη · εκκαθαρίζεται με επανεκκίνηση" data-en="Memory only · cleared when the server restarts">Μόνο στη μνήμη · εκκαθαρίζεται με επανεκκίνηση</span></p></div>
+      <div class="demo-panel">
+        <div class="demo-panel-head"><div><span class="section-kicker" data-el="ΦΑΝΤΑΣΤΙΚΟ ΠΕΡΙΣΤΑΤΙΚΟ" data-en="FICTIONAL SCENARIO">ΦΑΝΤΑΣΤΙΚΟ ΠΕΡΙΣΤΑΤΙΚΟ</span><h3 data-el="Δημιούργησε τοπικό demo" data-en="Create a local demo">Δημιούργησε τοπικό demo</h3></div><span class="panel-index">01—03</span></div>
+        <form id="demo-form">
+          <label for="category-select" data-el="Κατηγορία παραδείγματος" data-en="Example category">Κατηγορία παραδείγματος</label>
+          <select id="category-select" name="category" required disabled><option value="" data-el="Φόρτωση…" data-en="Loading…">Φόρτωση…</option></select>
+          <label for="scenario-select" data-el="Φανταστικό περιστατικό" data-en="Fictional scenario">Φανταστικό περιστατικό</label>
+          <select id="scenario-select" name="scenario" required disabled><option value="" data-el="Πρώτα διάλεξε κατηγορία" data-en="Choose a category first">Πρώτα διάλεξε κατηγορία</option></select>
+          <div class="scenario-preview" id="scenario-preview" aria-live="polite"><span class="preview-mark">ε</span><p data-el="Η περιγραφή του επιλεγμένου παραδείγματος θα εμφανιστεί εδώ." data-en="The selected example will appear here.">Η περιγραφή του επιλεγμένου παραδείγματος θα εμφανιστεί εδώ.</p></div>
+          <label class="confirm-row" for="synthetic-confirm"><input id="synthetic-confirm" type="checkbox" required><span data-el="Καταλαβαίνω ότι αυτό είναι φανταστικό demo και όχι πραγματική αναφορά." data-en="I understand this is a fictional demo, not a real report.">Καταλαβαίνω ότι αυτό είναι φανταστικό demo και όχι πραγματική αναφορά.</span></label>
+          <button class="button button-dark submit-button" id="submit-report" type="submit" disabled><span data-el="Δημιούργησε demo αριθμό" data-en="Create demo ID">Δημιούργησε demo αριθμό</span><span aria-hidden="true">↗</span></button>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+        <section class="receipt-area" aria-labelledby="receipt-title">
+          <div class="receipt-heading"><h4 id="receipt-title" data-el="Τοπικά demo" data-en="Local demos">Τοπικά demo</h4><span id="receipt-count">0</span></div>
+          <p class="empty-receipts" id="empty-receipts" data-el="Δεν υπάρχουν demo ακόμη." data-en="No demos yet.">Δεν υπάρχουν demo ακόμη.</p>
+          <ol class="receipt-list" id="receipt-list"></ol>
+        </section>
+      </div>
     </section>
   </main>
 
-  <footer><a class="brand" href="#top"><span class="brand-mark">ε</span><span>ens<span class="brand-accent">.</span>cy</span></a><p data-el="Ένα νέο project για πιο υπεύθυνη αναφορά." data-en="A new project for more responsible reporting.">Ένα νέο project για πιο υπεύθυνη αναφορά.</p><span class="footer-note">ΑΝΕΞΑΡΤΗΤΟ ΠΡΩΤΟΤΥΠΟ · ΟΧΙ ΕΠΙΣΗΜΗ ΥΠΗΡΕΣΙΑ</span></footer>
-  <script src="site.js"></script>
+  <footer><a class="brand" href="#top"><span class="brand-mark">ε</span><span>ens<span class="brand-accent">.</span>cy</span></a><p data-el="Πρωτότυπο επίδειξης · μόνο συνθετικά παραδείγματα" data-en="Demonstration prototype · fictional examples only">Πρωτότυπο επίδειξης · μόνο συνθετικά παραδείγματα</p><span class="footer-note" data-el="ΑΝΕΞΑΡΤΗΤΟ ΠΡΩΤΟΤΥΠΟ · ΟΧΙ ΕΠΙΣΗΜΗ ΥΠΗΡΕΣΙΑ" data-en="INDEPENDENT PROTOTYPE · NOT AN OFFICIAL SERVICE">ΑΝΕΞΑΡΤΗΤΟ ΠΡΩΤΟΤΥΠΟ · ΟΧΙ ΕΠΙΣΗΜΗ ΥΠΗΡΕΣΙΑ</span></footer>
 </body>
 </html>

@@ -2,20 +2,24 @@
 
 Standalone civic reporting and digital evidence project. It is not an official authority service.
 
-## Preview
+## Run the interactive local demo
 
-Open `index.html` in a browser. The landing page is a visual prototype; its report button leads to an explanatory section and does not submit information.
-
-See [HANDOFF.md](HANDOFF.md) for Mac installation, Work Mode setup, and GitHub repository commands. `AGENTS.md` defines this repository's standalone boundary.
-
-## Verify prototype bundle
-
-Requires Python 3.12+, no third-party packages.
+Requires Python 3.12+ and no third-party packages.
 
 ```sh
-python -m unittest discover -s tests -v
-python -m verifier.cli create-demo /tmp/civic-evidence-demo
-python -m verifier.cli verify /tmp/civic-evidence-demo
+python3 app.py
+```
+
+Open `http://127.0.0.1:8765`. Stop the server with `Control+C`.
+
+The demo offers fixed fictional scenarios only. It has no free-text report field, photo upload, GPS, identity field, authority route, or external transmission. Demo IDs and entries live in process memory and disappear when the server stops. The displayed server time is not a trusted timestamp. Keep the service on loopback; it is not suitable for real reports or public hosting.
+
+## Verify the synthetic verifier bundle
+
+```sh
+python3 -m unittest discover -s tests -v
+python3 -m verifier.cli create-demo /tmp/civic-evidence-demo
+python3 -m verifier.cli verify /tmp/civic-evidence-demo
 ```
 
 The verifier checks file hashes and event-chain consistency only. It does not prove capture authenticity, identity, time, location, device integrity, or scene truth. See [docs/STATUS.md](docs/STATUS.md).
