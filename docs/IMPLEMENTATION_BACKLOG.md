@@ -7,13 +7,15 @@
 - [x] Implement standard-library hash/event-chain verifier POC.
 - [x] Run verifier positive/tamper tests and record outputs.
 - [x] Add a loopback-only, synthetic-only reporting demo with an in-memory receipt API.
+- [x] Add browser-camera supporting-image capture, versioned local report API, SHA-256 receipt, and retry deduplication.
+- [ ] Create native iOS and Android clients; retain separate assurance labels for browser-provided images.
 - [ ] Verify current official online reporting routes by incident type; targeted only.
 - [ ] Complete repo/license/security audit for candidates chosen for POC.
 
 ## Phase 1 — evidence POC
 
 - [ ] Define versioned evidence bundle schema and signed manifest.
-- [ ] Integrate C2PA verifier in a pinned backend/CLI release.
+- [ ] Audit and integrate a pinned ProofMode/C2PA implementation per mobile platform.
 - [ ] Build small Kotlin CameraX capture spike; preserve raw bytes.
 - [ ] Build Swift AVFoundation capture spike; preserve raw bytes.
 - [ ] Bind fresh server challenge to media digest and attestation assertion.
