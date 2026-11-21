@@ -1,13 +1,16 @@
 # Project status
 
-Updated: 2026-11-20
+Updated: 2026-11-21
 
 ## Implemented
 
 - Standalone Git repository with the project brief and preserved initial history.
 - Static bilingual prototype with an interactive local demo flow.
-- Python standard-library backend bound to loopback; versioned local API and two fixed fictional traffic scenarios.
+- Responsive small-screen navigation, keyboard-visible focus, custom 404, and local PWA metadata/assets for the desktop web prototype.
+- Python standard-library backend bound to loopback; versioned local API and two fixed demo scenarios.
 - Browser camera preview for a supporting image; server hashes the compressed frame and discards image bytes.
+- Expo Android/iOS/web app source with native camera capture, local SHA-256, and in-memory receipts; its web output is configured for static export.
+- Project-specific icon assets replace the Expo starter branding in the app shell.
 - Idempotent local demo receipts; no location, identity fields, free text, persistent media storage, or external transmission.
 - Python standard-library CLI that checks media SHA-256, manifest binding, and a hash-linked event log.
 - Synthetic verifier bundle explicitly marked as non-evidence.
@@ -17,7 +20,7 @@ Updated: 2026-11-20
 | Capability | Status | Blocker |
 |---|---|---|
 | Persistent report storage or production backend | NOT IMPLEMENTED | Current service is a loopback-only demo with volatile in-memory state |
-| Native Android/iOS capture | BLOCKED | The repository contains no mobile applications; Android SDK/Java and physical-device testing are unavailable here |
+| Native Android/iOS camera capture | IMPLEMENTED IN SOURCE; NOT TESTED ON DEVICE | Expo camera flow is present; native builds and real-device capture have not been verified |
 | C2PA signing and trust validation | NOT IMPLEMENTED | No signing identity or validated mobile/backend integration |
 | Device/app attestation | NOT IMPLEMENTED | Requires platform-specific apps, server verification, and physical devices |
 | Trusted timestamp | NOT IMPLEMENTED | Requires TSA/QTSP selection, agreement, and RFC 3161 validation |
@@ -32,6 +35,8 @@ Gov.cy currently provides a Cyprus Police route for anonymous information/compla
 
 ## Acceptance status
 
-- Local fictional report and browser-frame hash flow: implemented for demonstration only; records disappear when the local process stops and the image itself is discarded.
+- Local demo receipt and browser-frame hash flow: implemented for demonstration only; records disappear when the local process stops and the image itself is discarded.
+- Mobile capture and hash flow: implemented in Expo source only; not device-tested. Photos are not uploaded; receipts are session-only.
+- Responsive navigation, static/PWA metadata, manifest assets, and custom not-found pages: implemented in source; not production-host tested.
 - Hash check and event-chain code: tests cover valid and tampered bundles.
-- All device, cryptographic signer, timestamp, location, institutional and legal claims: NOT TESTED / BLOCKED.
+- C2PA, device/app attestation, trusted timestamp, location, institutional and legal claims: NOT TESTED / BLOCKED.

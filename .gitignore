@@ -3,3 +3,16 @@ __pycache__/
 .venv/
 .DS_Store
 .pytest_cache/
+**/node_modules/
+/mobile/.expo/
+/mobile/dist/
+/mobile/web-build/
+/mobile/ios/
+/mobile/android/
+.env*
+!.env.example
+*.pem
+*.p8
+*.p12
+*.mobileprovision
+*.map

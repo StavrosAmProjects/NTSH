@@ -22,11 +22,11 @@ X-Confirmed-Synthetic: true
 Idempotency-Key: <8–80 letters, digits, or hyphens>
 ```
 
-The server checks a small set of file markers and a 4 MiB size limit, computes SHA-256, creates a fictional receipt, and discards the received bytes. The check does not decode the image, prove capture origin, or validate provenance. A retry with the same key and same scenario/hash returns the same receipt; reusing the key for different content returns `409`.
+The server checks a small set of file markers and a 4 MiB size limit, computes SHA-256, creates a demo receipt, and discards the received bytes. The check does not decode the image, prove capture origin, or validate provenance. A retry with the same key and same scenario/hash returns the same receipt; reusing the key for different content returns `409`.
 
 Each receipt states `synthetic-demo-only`, `supporting-image-unverified`, `not-integrated` for C2PA/app attestation/trusted timestamps, and `not-connected` for authorities. Data is held in memory, capped at 50 receipts, and lost when the process stops.
 
-The legacy `POST /api/reports` JSON route remains for compatibility with the first demo; it creates a fictional receipt without an image.
+The legacy `POST /api/reports` JSON route remains for compatibility with the first demo; it creates a demo receipt without an image.
 
 ## Production boundary
 

@@ -1,12 +1,12 @@
 # Open-source and dependency audit
 
-Review date: 2026-11-20. This is a desk review of upstream project pages and the current local prototype. It is not a formal security review, license opinion, or approval for production use. Repository details can change; repeat checks against exact versions before adoption.
+Review date: 2026-11-21. This is a desk review of upstream project pages and the current local web and Expo prototypes. It is not a formal security review, license opinion, or approval for production use. Repository details can change; repeat checks against exact versions before adoption.
 
 ## Current project inventory
 
-The prototype has no third-party runtime dependencies. The backend uses Python standard-library modules; the frontend uses plain HTML, CSS, and JavaScript with no imported packages. No package manifest or lockfile is present. The app makes no external requests. The local demo only accepts one of three fixed fictional scenarios and stores receipts in memory.
+The desktop prototype uses Python standard-library modules, plain HTML, CSS, and JavaScript. The mobile app uses Expo SDK 58, React Native, and its package-lock dependencies. It has no analytics or third-party runtime reporting service. The desktop API is bound to loopback; the mobile capture and receipt flow runs in the app and keeps receipts in memory. Both clients use two fixed local-test parking scenarios. No C2PA, proof-of-capture, timestamp, authority routing, or persistent production service is connected. `npm audit --offline` reported zero known advisories across 790 resolved packages using the local npm audit data. Because registry access was unavailable, advisories could not be refreshed; `expo install --check` also fell back to the SDK's bundled version map. The unused `expo-font` dependency was removed from the app manifest and lockfile.
 
-No upstream project below has been copied into or installed by this prototype. For the present demo, adding them would increase review and maintenance work without enabling a requested feature.
+No upstream project below has been copied into or installed by this prototype. For the present local test, adding them would increase review and maintenance work without enabling a verified product need.
 
 ## Candidate upstream projects reviewed
 
@@ -34,4 +34,6 @@ Before adopting a dependency or repository, record its upstream URL, exact versi
 
 ## Limits of this review
 
-This pass did not perform a full source-code audit of upstream projects, resolve transitive dependency graphs for unadopted candidates, or assess CVEs against pinned versions (there are no pinned third-party runtime dependencies in the current project). The app is a local synthetic prototype, not a production reporting or evidence service.
+A pattern-based scan of all 7 Git commits and the working tree found no private-key headers, GitHub-token-like strings, AWS access-key IDs, or credential-like filenames. This is a heuristic scan, not a guarantee that every kind of secret is absent.
+
+This pass did not perform a full source-code audit of upstream projects, resolve transitive dependency graphs for unadopted candidates, or assess advisories against a refreshed registry database. The app is a local prototype, not a production reporting or evidence service.

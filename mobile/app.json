@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "Ensinesthisi.cy",
+    "slug": "ensinesthisicy",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "ensinesthisicy",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "icon": "./assets/images/icon.png",
+      "bundleIdentifier": "cy.diki.ensinesthisi"
+    },
+    "android": {
+      "package": "cy.diki.ensinesthisi",
+      "adaptiveIcon": {
+        "backgroundColor": "#F4F0E6",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png",
+      "name": "Ensinesthisi.cy",
+      "shortName": "ens.cy",
+      "themeColor": "#F4F5EF",
+      "backgroundColor": "#F4F5EF"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Η κάμερα χρησιμοποιείται μόνο για την τοπική δοκιμή φωτογραφίας.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#f4f0e6",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 76
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "93276499-56ea-4e3f-a110-7d4a64d5253a"
+      }
+    },
+    "owner": "diki.cy"
+  }
+}

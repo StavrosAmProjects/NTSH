@@ -1,15 +1,47 @@
 import hashlib
+import threading
+import urllib.error
+import urllib.request
 import unittest
+from http.server import HTTPServer
 
-from app import create_captured_demo_report, create_demo_report, inspect_supporting_image
+from app import Handler, HOST, create_captured_demo_report, create_demo_report, inspect_supporting_image
 
 
 class DemoReportTests(unittest.TestCase):
-    def test_catalog_contains_only_the_two_requested_fictional_traffic_examples(self):
+    def test_catalog_contains_only_the_two_requested_demo_scenarios(self):
         from app import SCENARIOS
 
         self.assertEqual({"sidewalk-parking", "disabled-bay-parking"}, set(SCENARIOS))
         self.assertEqual({"traffic"}, {scenario["category"] for scenario in SCENARIOS.values()})
+
+
+class LocalWebTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.server = HTTPServer((HOST, 0), Handler)
+        cls.thread = threading.Thread(target=cls.server.serve_forever, daemon=True)
+        cls.thread.start()
+        cls.base_url = f"http://{HOST}:{cls.server.server_port}"
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.server.shutdown()
+        cls.server.server_close()
+        cls.thread.join(timeout=2)
+
+    def test_manifest_is_served_and_unknown_routes_get_the_custom_404(self):
+        with urllib.request.urlopen(f"{self.base_url}/manifest.webmanifest") as response:
+            manifest = response.read().decode("utf-8")
+            self.assertEqual(200, response.status)
+            self.assertIn("Ensinesthisi.cy", manifest)
+
+        with self.assertRaises(urllib.error.HTTPError) as error:
+            urllib.request.urlopen(f"{self.base_url}/.git/config")
+        body = error.exception.read().decode("utf-8")
+        error.exception.close()
+        self.assertEqual(404, error.exception.code)
+        self.assertIn("This page could not be found", body)
 
     def test_fixed_synthetic_scenario_creates_non_transmitted_receipt(self):
         reports = []

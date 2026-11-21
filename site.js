@@ -1,4 +1,6 @@
 const languageButton = document.querySelector('#language');
+const mobileMenuToggle = document.querySelector('#mobile-menu-toggle');
+const mobileMenu = document.querySelector('#mobile-menu');
 const categorySelect = document.querySelector('#category-select');
 const scenarioSelect = document.querySelector('#scenario-select');
 const syntheticConfirm = document.querySelector('#synthetic-confirm');
@@ -72,7 +74,7 @@ function renderScenarios() {
   const category = catalog.categories[categorySelect.value];
   scenarioSelect.replaceChildren();
   addOption(scenarioSelect, '', category
-    ? (language === 'el' ? 'Διάλεξε παράδειγμα' : 'Choose a scenario')
+    ? (language === 'el' ? 'Διάλεξε περίπτωση' : 'Choose a scenario')
     : (language === 'el' ? 'Πρώτα διάλεξε κατηγορία' : 'Choose a category first'));
   Object.entries(catalog.scenarios)
     .filter(([, scenario]) => scenario.category === categorySelect.value)
@@ -87,7 +89,7 @@ function renderPreview() {
   const paragraph = preview.querySelector('p');
   paragraph.textContent = scenario
     ? scenario.summary[language]
-    : (language === 'el' ? 'Επίλεξε μια περίπτωση για να δεις το παράδειγμα.' : 'Choose a scenario to see the example.');
+    : (language === 'el' ? 'Επίλεξε μια περίπτωση για να δεις πώς λειτουργεί η τοπική δοκιμή.' : 'Choose a scenario to see how the local test works.');
   preview.classList.toggle('has-scenario', Boolean(scenario));
 }
 
@@ -101,7 +103,7 @@ function renderReceipts() {
     title.textContent = report.scenario_title[language];
     const status = document.createElement('span');
     status.className = 'receipt-status';
-    status.textContent = language === 'el' ? 'ΔΟΚΙΜΗ' : 'DEMO';
+    status.textContent = language === 'el' ? 'ΔΟΚΙΜΗ' : 'TEST';
     top.append(title, status);
     const id = document.createElement('code');
     id.textContent = report.id;
@@ -112,7 +114,7 @@ function renderReceipts() {
     const note = document.createElement('small');
     note.textContent = language === 'el'
       ? 'Τοπική δοκιμή. Δεν στάλθηκε σε αρχή. Η φωτογραφία δεν επαληθεύτηκε.'
-      : 'Local demo. Not sent to an authority. Photo not verified.';
+      : 'Local test. Not sent to an authority. Photo not verified.';
     item.append(top, id, hash, note);
     receiptList.append(item);
   });
@@ -164,7 +166,7 @@ async function openCamera() {
   if (!navigator.mediaDevices?.getUserMedia) {
     setCameraStatus(
       'Η κάμερα δεν είναι διαθέσιμη σε αυτή τη σελίδα. Άνοιξε τη δοκιμή από το localhost με ενημερωμένο browser.',
-      'Camera access is unavailable on this page. Open the demo through localhost in an up-to-date browser.',
+      'Camera access is unavailable on this page. Open the local test through localhost in an up-to-date browser.',
       true
     );
     return;
@@ -175,8 +177,8 @@ async function openCamera() {
     cameraVideo.hidden = false;
     await cameraVideo.play();
     setCameraStatus(
-      'Η κάμερα λειτουργεί. Η φωτογραφία θα είναι συμπιεσμένο δείγμα, όχι το πρωτότυπο.',
-      'The camera is on. The photo will be a compressed sample, not the original.'
+      'Η κάμερα λειτουργεί. Η φωτογραφία θα συμπιεστεί πριν σταλεί στην τοπική εφαρμογή.',
+      'The camera is on. The photo will be compressed before it is sent to the local app.'
     );
   } catch {
     cameraStream = null;
@@ -196,7 +198,7 @@ async function sendCapturedImage() {
   updateControls();
   setCameraStatus(
     'Η φωτογραφία στέλνεται στην εφαρμογή που τρέχει σε αυτόν τον υπολογιστή, για να υπολογιστεί το ψηφιακό της αποτύπωμα. Δεν πάει σε αρμόδια αρχή.',
-    'Sending the photo to the demo running on this computer to calculate its file hash. It is not sent to an authority.'
+    'Sending the photo to the app running on this computer to calculate its file hash. It is not sent to an authority.'
   );
   try {
     const result = await api('/api/v1/reports', {
@@ -219,7 +221,7 @@ async function sendCapturedImage() {
     showMessage('failed', true);
     setCameraStatus(
       'Η εφαρμογή δεν ολοκλήρωσε τη διαδικασία. Η φωτογραφία παραμένει σε αυτή τη σελίδα. Δοκίμασε ξανά.',
-      'The demo did not finish processing the photo. It is still on this page. Try again.',
+      'The app did not finish processing the photo. It is still on this page. Try again.',
       true
     );
   } finally {
@@ -251,17 +253,17 @@ async function capturePhoto() {
   cameraPreview.hidden = false;
   stopCamera();
   setCameraStatus(
-    'Έτοιμη η δοκιμαστική φωτογραφία. Δεν είναι το πρωτότυπο και δεν έχει επαληθευτεί. Δημιουργείται η τοπική απόδειξη.',
-    'Demo photo ready. It is not the original and has not been verified. Creating the local receipt.'
+    'Έτοιμη η φωτογραφία. Είναι συμπιεσμένη και δεν έχει επαληθευτεί. Δημιουργείται η τοπική απόδειξη.',
+    'The photo is ready. It is compressed and has not been verified. Creating the local receipt.'
   );
   await sendCapturedImage();
 }
 
 function showMessage(key, isError = false) {
   const messages = {
-    ready: { el: 'Έτοιμη η δοκιμή. Χρησιμοποίησε μόνο τα φανταστικά παραδείγματα.', en: 'The demo is ready. Please use the fictional examples only.' },
+    ready: { el: 'Η τοπική δοκιμή είναι έτοιμη.', en: 'The local test is ready.' },
     unavailable: { el: 'Δεν μπορώ να συνδεθώ με την τοπική εφαρμογή. Άνοιξέ την με python3 app.py και δοκίμασε ξανά.', en: 'Could not connect to the local app. Start it with python3 app.py and try again.' },
-    submitted: { el: 'Δημιουργήθηκε δοκιμαστική απόδειξη. Υπολογίστηκε το ψηφιακό αποτύπωμα και η φωτογραφία διαγράφηκε από την εφαρμογή. Δεν στάλθηκε σε αρχή.', en: 'Demo receipt created. The file hash was calculated and the photo was discarded. Nothing was sent to an authority.' },
+    submitted: { el: 'Δημιουργήθηκε η τοπική απόδειξη. Υπολογίστηκε το ψηφιακό αποτύπωμα και η φωτογραφία διαγράφηκε. Δεν στάλθηκε σε αρχή.', en: 'Local receipt created. The file hash was calculated and the photo was discarded. Nothing was sent to an authority.' },
     failed: { el: 'Δεν δημιουργήθηκε η απόδειξη. Μπορείς να δοκιμάσεις ξανά.', en: 'No receipt was created. You can try again.' },
   };
   message.dataset.key = key;
@@ -286,6 +288,22 @@ languageButton.addEventListener('click', () => {
   language = language === 'el' ? 'en' : 'el';
   localizeStaticContent();
   if (currentMessage) showMessage(currentMessage, isError);
+});
+function setMobileMenu(open) {
+  mobileMenu.hidden = !open;
+  mobileMenuToggle.setAttribute('aria-expanded', String(open));
+  if (open) mobileMenu.querySelector('a')?.focus();
+}
+mobileMenuToggle.addEventListener('click', () => setMobileMenu(mobileMenu.hidden));
+mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMobileMenu(false)));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !mobileMenu.hidden) {
+    setMobileMenu(false);
+    mobileMenuToggle.focus();
+  }
+});
+document.addEventListener('pointerdown', (event) => {
+  if (!mobileMenu.hidden && !event.target.closest('#primary-nav')) setMobileMenu(false);
 });
 startCameraButton.addEventListener('click', openCamera);
 captureButton.addEventListener('click', capturePhoto);
