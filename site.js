@@ -37,6 +37,9 @@ function localizeStaticContent() {
     node.setAttribute('aria-label', node.getAttribute(`data-${language}-aria`));
   });
   languageButton.textContent = language === 'el' ? 'EN' : 'ΕΛ';
+  mobileMenuToggle.setAttribute('aria-label', mobileMenu.hidden
+    ? (language === 'el' ? 'Άνοιγμα μενού' : 'Open menu')
+    : (language === 'el' ? 'Κλείσιμο μενού' : 'Close menu'));
   renderCategories();
   renderScenarios();
   renderPreview();
@@ -292,6 +295,9 @@ languageButton.addEventListener('click', () => {
 function setMobileMenu(open) {
   mobileMenu.hidden = !open;
   mobileMenuToggle.setAttribute('aria-expanded', String(open));
+  mobileMenuToggle.setAttribute('aria-label', open
+    ? (language === 'el' ? 'Κλείσιμο μενού' : 'Close menu')
+    : (language === 'el' ? 'Άνοιγμα μενού' : 'Open menu'));
   if (open) mobileMenu.querySelector('a')?.focus();
 }
 mobileMenuToggle.addEventListener('click', () => setMobileMenu(mobileMenu.hidden));

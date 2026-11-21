@@ -42,7 +42,7 @@ export function CustomTabList({ children, ...props }: TabListProps) {
 }
 
 const styles = StyleSheet.create({
-  slot: { height: '100%' },
+  slot: { height: '100%', paddingBottom: 64 },
   tabList: {
     position: 'absolute',
     bottom: 0,

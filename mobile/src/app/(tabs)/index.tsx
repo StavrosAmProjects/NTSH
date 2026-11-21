@@ -8,7 +8,7 @@ import { useReports, type ReportKind } from '@/components/report-context';
 
 const ink = '#172522';
 const muted = '#66736e';
-const green = '#176b55';
+const green = '#315e4d';
 const paper = '#f4f5ef';
 
 export function generateMetadata(): Metadata {
@@ -111,22 +111,22 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: paper },
   screen: { flex: 1, width: '100%', maxWidth: 600, alignSelf: 'center' },
   scroll: { flex: 1 },
-  page: { paddingHorizontal: 22, paddingBottom: 18 },
+  page: { paddingHorizontal: 22, paddingBottom: 22 },
   header: { minHeight: 60, flexDirection: 'row', alignItems: 'center', gap: 10 },
   brandMark: { width: 32, height: 32, borderRadius: 9 },
   brand: { flex: 1, color: ink, fontWeight: '800', fontSize: 12, letterSpacing: 1.5 },
   historyButton: { minHeight: 44, justifyContent: 'center', paddingHorizontal: 13, borderRadius: 22, backgroundColor: '#e8ebe4' },
   historyButtonText: { color: ink, fontSize: 12, fontWeight: '700' },
-  hero: { paddingTop: 18, paddingBottom: 19 },
-  title: { color: ink, fontSize: 29, lineHeight: 35, fontWeight: '700', letterSpacing: -0.6 },
+  hero: { paddingTop: 22, paddingBottom: 23 },
+  title: { color: ink, fontSize: 30, lineHeight: 36, fontWeight: '700', letterSpacing: -0.8 },
   intro: { color: muted, fontSize: 14, lineHeight: 20, marginTop: 7 },
   group: { marginBottom: 19 },
   groupTitle: { color: ink, fontSize: 15, fontWeight: '700', marginBottom: 8 },
-  choiceList: { backgroundColor: '#fff', borderRadius: 14, borderWidth: 1, borderColor: '#dfe3dc', overflow: 'hidden' },
-  choiceRow: { minHeight: 76, paddingHorizontal: 14, paddingVertical: 12, flexDirection: 'row', alignItems: 'center', gap: 12, borderBottomWidth: 1, borderBottomColor: '#edf0ea' },
+  choiceList: { backgroundColor: '#fff', borderRadius: 18, borderWidth: 1, borderColor: '#e1e5dd', overflow: 'hidden', shadowColor: '#1f3029', shadowOpacity: 0.045, shadowRadius: 14, shadowOffset: { width: 0, height: 5 }, elevation: 1 },
+  choiceRow: { minHeight: 78, paddingHorizontal: 16, paddingVertical: 13, flexDirection: 'row', alignItems: 'center', gap: 12, borderBottomWidth: 1, borderBottomColor: '#edf0ea' },
   choiceLast: { borderBottomWidth: 0 },
-  choiceSelected: { backgroundColor: '#f2f8f4' },
-  choicePressed: { opacity: 0.82 },
+  choiceSelected: { backgroundColor: '#f2f6f1' },
+  choicePressed: { opacity: 0.76 },
   choiceMark: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#c8d7c9' },
   choiceMarkSelected: { backgroundColor: green },
   choiceCopy: { flex: 1, gap: 3 },
@@ -135,15 +135,15 @@ const styles = StyleSheet.create({
   radio: { width: 22, height: 22, borderWidth: 1.5, borderColor: '#aeb9b1', borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
   radioSelected: { borderColor: green },
   radioDot: { height: 11, width: 11, backgroundColor: green, borderRadius: 6 },
-  moreButton: { minHeight: 52, paddingHorizontal: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: '#dfe3dc' },
+  moreButton: { minHeight: 56, paddingHorizontal: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: '#dfe3dc' },
   moreTitle: { color: green, fontSize: 14, fontWeight: '700' },
   moreArrow: { color: green, fontSize: 23 },
-  footer: { paddingTop: 10, paddingHorizontal: 22, paddingBottom: 7, backgroundColor: paper, borderTopWidth: 1, borderTopColor: '#dfe3dc' },
+  footer: { paddingTop: 14, paddingHorizontal: 22, paddingBottom: 9, backgroundColor: paper, borderTopWidth: 1, borderTopColor: '#dfe3dc' },
   footerNote: { color: muted, fontSize: 12, lineHeight: 17, textAlign: 'left', marginBottom: 10 },
-  primaryButton: { minHeight: 56, borderRadius: 16, paddingHorizontal: 18, backgroundColor: green, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  primaryButton: { minHeight: 58, borderRadius: 18, paddingHorizontal: 19, backgroundColor: green, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   buttonDisabled: { backgroundColor: '#aebbb3' },
-  buttonPressed: { opacity: 0.86, transform: [{ scale: 0.99 }] },
+  buttonPressed: { opacity: 0.88, transform: [{ scale: 0.99 }] },
   primaryButtonText: { color: '#fff', fontSize: 15, fontWeight: '700' },
-  buttonArrow: { color: '#fff', fontSize: 22 },
+  buttonArrow: { color: '#fff', fontSize: 22, width: 36, height: 36, lineHeight: 34, textAlign: 'center', borderRadius: 18, backgroundColor: '#ffffff20', overflow: 'hidden' },
   disclaimer: { textAlign: 'center', color: muted, fontSize: 10, marginTop: 7 },
 });
